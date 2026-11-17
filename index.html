@@ -736,6 +736,16 @@ function scan(){var vh=innerHeight;document.querySelectorAll(SEL).forEach(functi
 function revealRest(){var left=document.querySelectorAll('[data-rv="0"]');if(!left.length)return;left.forEach(function(el){io.unobserve(el);batch.push(el);});if(!flushing){flushing=true;requestAnimationFrame(flush);}}addEventListener("scroll",function(){if(innerHeight+scrollY>=document.documentElement.scrollHeight-40)revealRest();},{passive:true});function start(){scan();var t=null;new MutationObserver(function(){clearTimeout(t);t=setTimeout(scan,250);}).observe(document.getElementById("main")||document.body,{childList:true,subtree:true});
  addEventListener("resize",function(){clearTimeout(t);t=setTimeout(scan,300);});}
 if(window.__introHeld){window.__intro(function(){initial=false;start();});}else if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",start);else start();
+})();</script><script id="lantern-clip">/* Keep lanterns off the green carpet: each lantern group is clipped a little above the "Om Shri Ganeshaya Namah" line of the Invite section (about where the carpet starts), so lanterns drifting down with the parallax pass behind it. */(function(){
+var GAP=170,BIG=3000;
+function clip(){document.querySelectorAll("[data-framer-name=Content]").forEach(function(c){var inv=null,i,k=c.children;for(i=0;i<k.length;i++)if(k[i].getAttribute("data-framer-name")==="Invite")inv=k[i];if(!inv)return;var ir=inv.getBoundingClientRect();if(!ir.height)return;
+ var om=null,ps=inv.querySelectorAll("p,h1,h2,h3");for(i=0;i<ps.length;i++){if(ps[i].textContent.indexOf("गणेश")>=0&&ps[i].getBoundingClientRect().height){om=ps[i];break;}}
+ var end=(om?om.getBoundingClientRect().top:ir.top+GAP)-GAP;
+ for(i=0;i<k.length;i++){var n=k[i].getAttribute("data-framer-name")||"";if(n.indexOf("Lanterns")<0)continue;var r=k[i].getBoundingClientRect();var v="inset(-"+BIG+"px -"+BIG+"px "+Math.round(r.bottom-end)+"px -"+BIG+"px)";if(k[i].style.clipPath!==v)k[i].style.clipPath=v;}});}
+var t=null;function soon(){clearTimeout(t);t=setTimeout(clip,120);}
+function start(){clip();addEventListener("resize",soon);if(window.ResizeObserver){var ro=new ResizeObserver(soon);document.querySelectorAll("[data-framer-name=Content],[data-framer-name=Invite]").forEach(function(e){ro.observe(e)});}
+ new MutationObserver(soon).observe(document.getElementById("main")||document.body,{childList:true,subtree:true});[600,1500,3000].forEach(function(ms){setTimeout(clip,ms)});if(document.fonts&&document.fonts.ready)document.fonts.ready.then(clip);}
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",start);else start();
 })();</script><script id="custom-map-cta">
 /* VIDEO_URL: paste the wedding video link here when ready. While empty, clicking shows a "not uploaded" box. */
 var VIDEO_URL="";
