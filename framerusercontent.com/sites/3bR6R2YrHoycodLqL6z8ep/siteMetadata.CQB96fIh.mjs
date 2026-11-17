@@ -1,0 +1,2 @@
+import{t as e}from"./rolldown-runtime.Bi-D_2cA.mjs";function t(e,t){return{description:`Create a beautiful wedding invite that opens as a website. Choose a template, customise in 10 minutes and share it with your guests.`,favicon:`https://framerusercontent.com/assets/VRr5oPbK8EC2e8xlsQcVIsS47c.png`,robots:`max-image-preview:large`,socialImage:`https://framerusercontent.com/assets/7LPUQldg1w5B1Zrz0pCfh0AeQw.png`,title:`Wedding Invitation Templates – Missing Piece`}}function n(){return(n=e((()=>{})))()}export{t as n,n as t};
+//# sourceMappingURL=siteMetadata.CQB96fIh.mjs.map

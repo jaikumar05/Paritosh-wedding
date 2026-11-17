@@ -1,0 +1,19 @@
+# Website mirror leftovers (not part of the site)
+hts-cache/
+hts-log.txt
+t.contentsquare.net/
+slrgkgulru.pixelflow.so/
+
+# Local-only: backups of the template originals and source photos
+_originals_backup/
+photos/
+
+# Editor / tool settings
+.claude/
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Only the real page from the demos folder (the rest are empty pages from the original download)
+www.missingpieceinvites.com/demos/*
+!www.missingpieceinvites.com/demos/city.html
